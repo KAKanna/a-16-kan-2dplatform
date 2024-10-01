@@ -29,6 +29,7 @@ public class Crocodile : Enemy
         {
             bulletTimer = bulletWaitTime;
         }
+        Shoot();
     }
     public override void Behavior()
     {
@@ -42,6 +43,7 @@ public class Crocodile : Enemy
 
     public void Shoot()
     {
-        Instantiate(bullet, bulletSpawnPoint.position, Quaternion.identity);
+        if (bulletWaitTime == 0)
+        { Instantiate(bullet, bulletSpawnPoint.position, Quaternion.identity); }
     }
 }
