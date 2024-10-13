@@ -5,13 +5,15 @@ using UnityEngine;
 public class Ant : Enemy
 {
     [SerializeField] private Vector2 velocity;
-    [SerializeField] private Transform[] movepoints;
+    [SerializeField] private Transform[] movePoints;
 
     public void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+
         Init(10);
         Debug.Log($"Health Ant {Health}");
-
+        
         Behavior();
     }
     //moving not warp
@@ -25,20 +27,20 @@ public class Ant : Enemy
         //             point at now    speed          time(fixupdate)
         //                  ^            ^                  ^
         rb.MovePosition(rb.position + velocity * Time.fixedDeltaTime);
-        if (rb.position.x <= movepoints[0].position.x && velocity.x < 0)
+        if (rb.position.x <= movePoints[0].position.x && velocity.x < 0)
         {
             Flip();
         }
-        else if (rb.position.x >= movepoints[1].position.x && velocity.x > 0)
+        else if (rb.position.x >= movePoints[1].position.x && velocity.x > 0)
         {
             Flip();
         }
     }
     public void Flip()
     {
-        velocity *= -1;
+        velocity.x *= -1;
 
-        Vector2 charScale = transform.localScale;
+        Vector3 charScale = transform.localScale;
         charScale.x *= -1;
         transform.localScale = charScale;
     }
