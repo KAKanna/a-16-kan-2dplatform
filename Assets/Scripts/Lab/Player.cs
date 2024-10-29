@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Player : Characters, IShootable
 {
+    [field: SerializeField]
     GameObject bullet;
     public GameObject Bullet { get { return bullet; } set { bullet = value; } }
-
+    [field: SerializeField]
     Transform spawnPoint;
     public Transform SpawnPoint { get { return spawnPoint; } set { spawnPoint = value; } }
 
