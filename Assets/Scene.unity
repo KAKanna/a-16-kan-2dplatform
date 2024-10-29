@@ -809,7 +809,7 @@ Transform:
   m_GameObject: {fileID: 469872055}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.01, y: 2.63, z: -8.300783}
+  m_LocalPosition: {x: 3.06, y: 2.63, z: -8.300783}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2357,12 +2357,9 @@ MonoBehaviour:
   health: 0
   anim: {fileID: 1457707760}
   rb: {fileID: 1457707762}
-  attackRange: 0
   player: {fileID: 1672041813}
+  spawnPoint: {fileID: 469872056}
   bullet: {fileID: 115806, guid: 40466c5ac40024bbca1e4b144cdf43c2, type: 3}
-  bulletSpawnPoint: {fileID: 469872056}
-  bulletWaitTime: 2
-  bulletTimer: 0
 --- !u!95 &1457707760 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 9555892, guid: c07db661138134f589f46b8510d57c9a, type: 3}
@@ -2622,11 +2619,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 448308, guid: c07db661138134f589f46b8510d57c9a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.04
+      value: 4.03
       objectReference: {fileID: 0}
     - target: {fileID: 448308, guid: c07db661138134f589f46b8510d57c9a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.8
+      value: 2.78
       objectReference: {fileID: 0}
     - target: {fileID: 448308, guid: c07db661138134f589f46b8510d57c9a, type: 3}
       propertyPath: m_LocalPosition.z

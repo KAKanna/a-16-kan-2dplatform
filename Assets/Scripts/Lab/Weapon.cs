@@ -16,13 +16,22 @@ public abstract class Weapon : MonoBehaviour
             damage = value;
         }
     }
-    public string owner;
+    protected string owner;
 
     public abstract void OnHitWith(Characters x);
 
     public abstract void Move();
+    public void Init(int _damage,string _owner)
+    {
+        Damage = _damage;
+        owner = _owner;
+    }
     public int GetShootDirection()
     {
         return 1;
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        
     }
 }
