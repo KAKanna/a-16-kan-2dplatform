@@ -17,7 +17,9 @@ public class Player : Characters, IShootable
     {   
         if (Input.GetButtonDown("Fire1") && WaitTime >= ReloadTime)
         {
-          Instantiate(bullet, spawnPoint.position, Quaternion.identity);
+          GameObject obj = Instantiate(bullet, spawnPoint.position, Quaternion.identity);
+          Banana banana = obj.GetComponent<Banana>();
+            banana.Init(30, this);
         }
     }
     public void Start()
@@ -34,4 +36,18 @@ public class Player : Characters, IShootable
     {
         WaitTime += Time.fixedDeltaTime;
     }
+
+    public void OnHitWith(Enemy enemy)
+    {
+        TakeDamage(enemy.DamageHit);
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+       Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+        if (enemy != null)
+        {
+            OnHitWith(enemy);
+        }
+    }
+
 }

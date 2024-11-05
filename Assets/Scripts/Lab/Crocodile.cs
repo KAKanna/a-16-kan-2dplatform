@@ -50,7 +50,11 @@ public class Crocodile : Enemy, IShootable
     {
         if (WaitTime >= ReloadTime)
         {
+            anim.SetTrigger("Shoot");
             GameObject obj = Instantiate(bullet, spawnPoint.position, Quaternion.identity);
+            Rock rockScript = obj.GetComponent<Rock>();
+
+            rockScript.Init(20,this);
             WaitTime = 0;
         }
     }

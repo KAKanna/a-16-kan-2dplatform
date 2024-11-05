@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
-    [SerializeField] private int damage;
+    [SerializeField] int damage;
     public int Damage
     {
         get
@@ -16,22 +16,27 @@ public abstract class Weapon : MonoBehaviour
             damage = value;
         }
     }
-    protected string owner;
+    protected IShootable shooter;
 
-    public abstract void OnHitWith(Characters x);
+    public abstract void OnHitWith(Characters characters);
 
     public abstract void Move();
-    public void Init(int _damage,string _owner)
+    public void Init(int newDamage,IShootable newOwner)
     {
-        Damage = _damage;
-        owner = _owner;
+        Damage = newDamage;
+        shooter = newOwner;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        OnHitWith(other.GetComponent<Characters>());
+        Destroy(this.gameObject, 5f);
     }
     public int GetShootDirection()
     {
-        return 1;
-    }
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        
+        float shootDir = shooter.SpawnPoint.position.x - shooter.SpawnPoint.parent.position.x;
+        if (shootDir > 0)
+            return 1;
+        else return -1;
     }
 }

@@ -17,7 +17,7 @@ public abstract class Characters : MonoBehaviour
         }
     }
 
-    public Animator anim;
+    public Animator anim; 
     public Rigidbody2D rb;
 
     public bool IsDead()
@@ -33,6 +33,7 @@ public abstract class Characters : MonoBehaviour
     public void TakeDamage(int damage)
     {
         Health -= damage;
+        Debug.Log($"{this.name} took {this.Health}");
         IsDead();
     }
     public void Init(int newHealth)
