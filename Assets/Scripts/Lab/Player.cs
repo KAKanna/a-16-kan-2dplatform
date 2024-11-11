@@ -14,7 +14,7 @@ public class Player : Characters, IShootable
 
     public float ReloadTime { get; set; }
     public float WaitTime { get; set; }
-    public Slider slider;
+
     public void Shoot()
     {   
         if (Input.GetButtonDown("Fire1") && WaitTime >= ReloadTime)
@@ -29,11 +29,10 @@ public class Player : Characters, IShootable
 
     public void Start()
     {
-        Init(500);
+        InitHealthBar(100);
+        Init(100);
         WaitTime = 0.0f;
         ReloadTime = 1.0f;
-        slider.maxValue = Health;
-        slider.value = Health;
     }
     void Update()
     {

@@ -23,6 +23,7 @@ public class Crocodile : Enemy, IShootable
     
     public void Start()
     {
+        InitHealthBar(100);
         Init(100);
         WaitTime = 0.0f;
         ReloadTime = 5.0f;

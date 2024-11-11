@@ -5,14 +5,15 @@ using UnityEngine.UI;
 
 public class Ant : Enemy
 {
-    [SerializeField] private Vector2 velocity;
-    [SerializeField] private Transform[] movePoints;
+    [SerializeField] Vector2 velocity;
+    [SerializeField] Transform[] movePoints;
 
     public void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
+        InitHealthBar(20);
         Init(20);
+        velocity = new Vector2(-1.0f, 0.0f);
         DamageHit = 5;
         Behavior();
     }
@@ -31,7 +32,7 @@ public class Ant : Enemy
         {
             Flip();
         }
-        else if (rb.position.x >= movePoints[1].position.x && velocity.x > 0)
+        if (rb.position.x >= movePoints[1].position.x && velocity.x > 0)
         {
             Flip();
         }

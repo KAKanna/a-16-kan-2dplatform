@@ -19,7 +19,9 @@ public abstract class Characters : MonoBehaviour
         }
     }
 
-    public HealthManager healthbar;
+    public HealthBar healthBar;
+    public int maxHealth;
+    public int currentHealth;
     public Animator anim; 
     public Rigidbody2D rb;
 
@@ -32,20 +34,25 @@ public abstract class Characters : MonoBehaviour
         }
         else return false;
     }
-
-    public void InitializeHealthBar(int maxHealth)
+    public void InitHealthBar(int initialHealth)
     {
-        healthbar.SetMaxHealth(maxHealth);
-        healthbar.UpdateHealthBar(maxHealth);
+        maxHealth = initialHealth;
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
+        //healthBar.UpdatsHealthBar(maxHealth);
     }
+
     public void TakeDamage(int damage)
     {
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
         Health -= damage;
         Debug.Log($"{this.name} took {this.Health}");
         IsDead();
     }
-    public void Init(int health)
+    public void Init(int newHealth)
     {
-        Health = health;
+        Health = newHealth;
+        newHealth = maxHealth;
     }
 }
