@@ -6,22 +6,16 @@ using UnityEngine.UI;
 public class HealthManager : MonoBehaviour
 {
 
-    public Image healthBar;
-    public float healthAmount = 100f;
-    void Start()
+    [SerializeField]public Slider healthSlider;
+    
+    public void SetMaxHealth(int health)
     {
-        
+        healthSlider.maxValue = health;
+        healthSlider.value = health;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateHealthBar(int health)
     {
-        
-    }
-    
-    public void TakeDamage(float damage)
-    {
-        healthAmount = damage;
-        healthBar.fillAmount = healthAmount / 100f;
+        healthSlider.value = health;
     }
 }

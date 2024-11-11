@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Crocodile : Enemy, IShootable
 {
@@ -36,6 +37,8 @@ public class Crocodile : Enemy, IShootable
         WaitTime += Time.fixedDeltaTime;
         Behavior();
     }
+
+
     public override void Behavior()
     {
         Vector2 direction = player.transform.position - transform.position;

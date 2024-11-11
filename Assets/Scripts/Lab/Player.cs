@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : Characters, IShootable
 {
@@ -13,20 +14,26 @@ public class Player : Characters, IShootable
 
     public float ReloadTime { get; set; }
     public float WaitTime { get; set; }
+    public Slider slider;
     public void Shoot()
     {   
         if (Input.GetButtonDown("Fire1") && WaitTime >= ReloadTime)
         {
-          GameObject obj = Instantiate(bullet, spawnPoint.position, Quaternion.identity);
-          Banana banana = obj.GetComponent<Banana>();
-            banana.Init(30, this);
+            GameObject obj = Instantiate(bullet, SpawnPoint.position, Quaternion.identity);
+            Banana banana = obj.GetComponent<Banana>();
+            banana.Init(5,this);
+            WaitTime = 0;
         }
     }
+   
+
     public void Start()
     {
-        Init(100);
+        Init(500);
         WaitTime = 0.0f;
         ReloadTime = 1.0f;
+        slider.maxValue = Health;
+        slider.value = Health;
     }
     void Update()
     {

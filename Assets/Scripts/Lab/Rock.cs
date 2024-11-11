@@ -10,7 +10,7 @@ public class Rock : Weapon
     private void Start()
     {
         Init(20, this.shooter);
-        force = new Vector2(GetShootDirection() *100, 400);
+        force = new Vector2(GetShootDirection() * 100, 400);
         Move();
     }
  
@@ -22,6 +22,8 @@ public class Rock : Weapon
     public override void OnHitWith(Characters characters)
     {
         if (characters is Player)
+        {
             characters.TakeDamage(this.Damage);
+        }
     }
 }

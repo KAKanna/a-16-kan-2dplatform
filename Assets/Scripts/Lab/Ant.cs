@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Ant : Enemy
 {
@@ -11,9 +12,8 @@ public class Ant : Enemy
     {
         rb = GetComponent<Rigidbody2D>();
 
-        Init(10);
-        Debug.Log($"Health Ant {Health}");
-        
+        Init(20);
+        DamageHit = 5;
         Behavior();
     }
     //moving not warp
@@ -36,6 +36,7 @@ public class Ant : Enemy
             Flip();
         }
     }
+
     public void Flip()
     {
         velocity.x *= -1;
